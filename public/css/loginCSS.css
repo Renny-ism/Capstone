@@ -1,0 +1,40 @@
+body {
+  background: linear-gradient(135deg, #491564, #310f44);
+}
+  label,
+  input,
+  .form-check-label,
+  .text-body,
+  .form-label,
+  .form-control::placeholder,
+  .fw-normal,
+  .fw-bold,
+  .small {
+    color: #d3d3d3 !important; /* light grey */
+  }
+
+  .form-control::placeholder {
+    opacity: 0.8;
+  }
+  .form-control:focus {
+  background-color: #3a1d4d !important; 
+  color: #d3d3d3;
+  box-shadow: none; 
+  border-color: #a066c8; 
+}
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}

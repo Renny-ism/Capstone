@@ -1,0 +1,238 @@
+:root {
+  --main-color: #491564;
+  --secondary-color: #ffb736;
+  --tertiary-color: ;
+  --color-dark-1-color: #f0a71f;
+  --color-dark-2-color: #76a13d;
+  --color-dark-3-color: #417784;
+  --color-dark-4-color: #930147;
+  --color-dark-5-color: #8c2009;
+  --color-light-1-color: #f4c162;
+  --color-light-2-color: #9fbd77;
+  --color-light-3-color: #7a9fa8;
+  --color-light-4-color: #b34d7e;
+  --color-light-5-color: #ae6252;
+}
+
+/*****************THIS FOR SIDEBAR AND BODY ***************/
+body {
+  background-color: #f3f1f1;
+  color: #000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+.sidebar {
+  height: 100vh;
+  position: fixed;
+  top: 55px; /* Account for navbar height */
+  left: 0;
+  width: 220px;
+  background-color: var(--main-color); /* Deep Purple */
+  z-index: 100;
+  padding-top: 1rem;
+}
+
+.sidebar a,
+.sidebar button {
+  color: #ffffff;
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sidebar a.active {
+  background-color: #310f44; 
+  color: white !important;
+  font-weight: bold;
+}
+
+.sidebar a:hover,
+.sidebar button:hover {
+  background-color: #7832a8;
+}
+
+.content {
+  margin-left: 220px; /* Make space for the sidebar */
+  padding-top: 80px; /* Make space for the navbar */
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.card {
+  background-color: #ffffff; /* Medium purple background */
+  border-radius: 1rem;
+  border: none;
+  color: #000000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card h6 {
+  font-weight: 500;
+}
+
+.card .badge {
+  font-size: 0.85rem;
+}
+
+.list-group-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border: none;
+}
+
+.badge-1-bg {
+  background-color: #ffd96a;
+  
+}
+
+.badge-2-bg {
+  background-color: var(--color-light-2-color);
+}
+
+.badge-3-bg {
+  background-color: var(--color-light-3-color);
+}
+
+.badge-4-bg {
+  background-color: var(--color-light-4-color);
+}
+
+.card-1-bg {
+  background-color: var(--color-dark-1-color) !important;
+}
+
+.card-2-bg {
+  background-color: #491564!important;
+}
+
+.card-3-bg {
+  background-color: #491564!important;
+}
+
+.card-4-bg {
+  background-color: #491564 !important;
+}
+
+.card-bg-success {
+  background-color: var(--color-light-2-color) !important;
+}
+
+.card-bg-info {
+  background-color: var(--color-light-3-color) !important;
+}
+
+.card-bg-warning {
+  background-color: var(--color-light-1-color) !important;
+}
+
+.card-bg-danger {
+  background-color: var(--color-light-5-color) !important;
+}
+
+
+
+.badge-bg-warning {
+  background-color: var(--color-dark-1-color) !important;
+}
+.badge-bg-success {
+  background-color: var(--color-dark-2-color) !important;
+}
+.badge-bg-danger {
+  background-color: var(--color-dark-4-color) !important;
+}
+.badge-bg-primary {
+  background-color: var(--color-dark-3-color) !important;
+}
+
+
+/*****************THIS IS FOR BUTTONS ***************/
+.btn-primary {
+  background-color: #491564;
+  border-color: #6f3fc0;
+}
+
+.btn-primary:hover,
+.btn-info:hover,
+.btn-danger:hover,
+.btn-back:hover {
+  background-color: #310f44;
+  filter: brightness(90%);
+}
+
+.btn-dark-shadow {
+  box-shadow: 5px 3px 8px 1px #888888;
+}
+
+.btn {
+  border-radius: 7px;
+  padding: 10px;
+}
+
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:focus:active {
+  background-color: #491564;
+  border-color: #6f3fc0;
+  box-shadow: none;
+  color: #fff;
+}
+.btn-back{
+  background-color: #6f3fc0;
+  border-color: #6f3fc0;
+}
+
+
+.card-body h4,
+.card-body h5,
+.card-body p {
+  color: #fff;
+  padding: 1rem;
+}
+.table th, .table td {
+  font-size: 0.9rem;
+}
+
+.list-group-item {
+  background-color: #ffffff;
+  color: black;
+}
+
+.card-title {
+  color: #fff;
+}
+
+.text-primary.text-decoration-none:hover {
+  text-decoration: underline;
+}
+
+
+strong {
+  color: #5e108b;
+}
+
+
+/******************************* NAVBAR ****************************/
+.custom-navbar {
+  background-color: #491564;/* Deep blue */
+  color: black;
+}
+.custom-navbar .navbar-brand,
+.custom-navbar .dropdown-toggle {
+  color: var(--color-light-3-color);
+}
+.custom-navbar .dropdown-menu {
+  background-color: #f8f9fa; /* Light background for dropdown */
+}
+
+.modal-header{
+  background-color: #712c83;
+  color:white;
+}
+
+
+
