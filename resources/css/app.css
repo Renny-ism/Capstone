@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* MAIN COLORS */
+    --main-color: #491564;
+    --button-hover: #7832a8;
+    --button-active: #310f44;
+    --card-color: #491564;
+
+    /* FOR STATUS */
+    --warning-color: #f0a71f;
+    --active-color: #76a13d;
+    --instock-color: #417784;
+    --out-color: #930147;
+}
+
+body {
+    background-color: var(--main-color);
+}
+
+[x-cloak] {
+    display: none !important;
+}
