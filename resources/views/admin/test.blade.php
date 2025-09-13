@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 use App\Http\Controllers\ProfileController;
@@ -146,3 +147,6 @@ Route::middleware('auth')->group(function () {
 
 
 require __DIR__.'/auth.php';
+=======
+hahahahahahahahahahahahah
+>>>>>>> db8f4d44e4422a84cb1f281a5d94d731077bed4c
