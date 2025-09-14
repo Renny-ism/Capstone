@@ -25,7 +25,7 @@
                 {{-- Dropdown Menu for Actions --}}
                 <div x-data="{ open: false }" class="relative w-full md:w-auto">
                     <button @click="open = !open" type="button" class="inline-flex items-center justify-center px-4 py-2 bg-main text-white rounded-lg hover:bg-button_hover focus:outline-none w-full md:w-auto">
-                        Other
+                        Others
                         <svg class="ml-2 -mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
@@ -111,57 +111,66 @@
 </div>
 {{-- Modal --}}
 <div id="addTele"
-    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
 
     <div class="bg-white rounded-lg w-full max-w-3xl shadow-lg p-6 relative">
-        <h2 class="text-xl font-semibold mb-4">Add Record</h2>
+        <h2 class="text-xl font-semibold mb-4">Add Telephone Record</h2>
 
         <form action="" method="POST" class="space-y-4">
             @csrf
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-medium">Asset Code </label>
+            <div class="flex flex-wrap gap-4">
+                {{-- Asset Code --}}
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Asset Code</label>
                     <input type="text" name="lt_asset_code" class="w-full border rounded-lg p-2">
                 </div>
-                {{-- Software Name --}}
-                <div>
-                    <label class="block text-sm font-medium">Date Acquired</label>
-                    <input type="date" name="lt-storage" class="w-full border rounded-lg p-2">
-                </div>
 
-                <div>
+                {{-- Brand --}}
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Brand</label>
-                    <select name="lt-brand" class="w-full border rounded-lg p-2">
-                         <option value="Laptop">...</option>     
-                        <option value="Laptop">Dell</option>     
+                    <select name="lt_brand" class="w-full border rounded-lg p-2">
+                        <option value="">Select Brand</option>
+                        <option value="Cisco">Cisco</option>
+                        <option value="Avaya">Avaya</option>
+                        <option value="Panasonic">Panasonic</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
 
-                <div>
+                {{-- Model --}}
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Model</label>
-                    <input type="text" name="lt-model" class="w-full border rounded-lg p-2">
+                    <input type="text" name="lt_model" class="w-full border rounded-lg p-2">
                 </div>
 
-                <div>
-
-                <label class="block text-sm font-medium">Building</label>
-                    <select name="dt_building" class="w-full border rounded-lg p-2">
-                        <option value="">...</option>
+                {{-- Building --}}
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Building</label>
+                    <select name="lt_building" class="w-full border rounded-lg p-2">
+                        <option value="">Select Building</option>
                         <option value="FDT">FDT</option>
                         <option value="PGT">PGT</option>
                         <option value="LRC">LRC</option>
                         <option value="BEdD">BEdD</option>
                     </select>
                 </div>
-                <div>
+
+                {{-- Department --}}
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Department</label>
-                    <input type="text" name="dt_loc" class="w-full border rounded-lg p-2">
+                    <input type="text" name="lt_department" class="w-full border rounded-lg p-2">
+                </div>
+
+                {{-- Date Acquired (Last) --}}
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Date Acquired</label>
+                    <input type="date" name="lt_date_acquired" class="w-full border rounded-lg p-2">
                 </div>
             </div>
-            
+
             {{-- Buttons --}}
-            <div class="flex justify-end gap-3 mt-4">
+            <div class="flex justify-end gap-3 mt-4 flex-wrap">
                 <button type="button"
                     onclick="document.getElementById('addTele').classList.add('hidden')"
                     class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">
@@ -182,3 +191,6 @@
         </button>
     </div>
 </div>
+
+
+

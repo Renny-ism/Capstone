@@ -95,66 +95,78 @@
 
 {{-- Modal --}}
 <div id="addToner"
-    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
 
     <div class="bg-white rounded-lg w-full max-w-3xl shadow-lg p-6 relative">
-        <h2 class="text-xl font-semibold mb-4">Add Record</h2>
+        <h2 class="text-xl font-semibold mb-4">Add Toner Record</h2>
 
         <form action="" method="POST" class="space-y-4">
             @csrf
-           
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {{-- Software Name --}}
-                 <div>
-                <label class="block text-sm font-medium">Asset Code </label>
-                <input type="text" name="lt_asset_code" class="w-full border rounded-lg p-2">
-            </div>
-            <div>
-                    <label class="block text-sm font-medium">Date Acquired</label>
-                    <input type="date" name="lt-storage" class="w-full border rounded-lg p-2">
+
+            <div class="flex flex-wrap gap-4">
+                {{-- Asset Code --}}
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Asset Code</label>
+                    <input type="text" name="toner_asset_code" class="w-full border rounded-lg p-2">
                 </div>
 
-                <div>
+                {{-- Brand --}}
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Brand</label>
-                    <select name="toner-brand" class="w-full border rounded-lg p-2">
-                        <option value="Laptop">...</option>     
-                        <option value="Laptop">Epson</option>     
+                    <select name="toner_brand" class="w-full border rounded-lg p-2">
+                        <option value="">Select Brand</option>
+                        <option value="HP">HP</option>
+                        <option value="Epson">Epson</option>
+                        <option value="Canon">Canon</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
 
-                <div>
+                {{-- Model --}}
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Model</label>
                     <input type="text" name="toner_model" class="w-full border rounded-lg p-2">
                 </div>
 
-                <div>
+                {{-- Type --}}
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Type</label>
                     <input type="text" name="toner_type" class="w-full border rounded-lg p-2">
                 </div>
-                
-                <div>
+
+                {{-- Color --}}
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Color</label>
-                    <select name="toner-color" class="w-full border rounded-lg p-2">
-                        <option value="...">...</option>      
+                    <select name="toner_color" class="w-full border rounded-lg p-2">
+                        <option value="">Select Color</option>
                         <option value="Cyan">Cyan</option>
-                        <option value="Magenta">Magenta</option>      
-                        <option value="Cyan">Yellow</option>
-                        <option value="Key">Key</option>      
+                        <option value="Magenta">Magenta</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="Key">Key (Black)</option>
                     </select>
                 </div>
-                 <div>
+
+                {{-- Capacity --}}
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Capacity</label>
-                    <input type="text" name="toner_model" class="w-full border rounded-lg p-2">
+                    <input type="text" name="toner_capacity" class="w-full border rounded-lg p-2">
                 </div>
 
-                <div>
+                {{-- Quantity --}}
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Quantity</label>
-                    <input type="number" name="toner_type" class="w-full border rounded-lg p-2">
+                    <input type="number" name="toner_quantity" class="w-full border rounded-lg p-2">
                 </div>
-            </div> 
-            
+
+                {{-- Date Acquired (Last) --}}
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Date Acquired</label>
+                    <input type="date" name="toner_date_acquired" class="w-full border rounded-lg p-2">
+                </div>
+            </div>
+
             {{-- Buttons --}}
-            <div class="flex justify-end gap-3 mt-4">
+            <div class="flex justify-end gap-3 mt-4 flex-wrap">
                 <button type="button"
                     onclick="document.getElementById('addToner').classList.add('hidden')"
                     class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">
@@ -175,3 +187,5 @@
         </button>
     </div>
 </div>
+
+

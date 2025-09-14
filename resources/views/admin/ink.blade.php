@@ -117,66 +117,91 @@
 </div>
 {{-- Modal --}}
 <div id="addink"
-    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
 
     <div class="bg-white rounded-lg w-full max-w-3xl shadow-lg p-6 relative">
-        <h2 class="text-xl font-semibold mb-4">Add Record</h2>
+        <h2 class="text-xl font-semibold mb-4">Add Ink Record</h2>
+
         <form action="" method="POST" class="space-y-4">
             @csrf
-            <div>
-                <label class="block text-sm font-medium">Asset Code </label>
-                <input type="text" name="lt_asset_code" class="w-full border rounded-lg p-2">
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-sm font-medium">Acquired Year</label>
-                    <input type="date" name="toner_acquiry" class="w-full border rounded-lg p-2">
+
+            <div class="flex flex-wrap gap-4">
+                {{-- Asset Code --}}
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Asset Code</label>
+                    <input type="text" name="ink_asset_code" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
+
+                {{-- Acquired Date --}}
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Acquired Date</label>
+                    <input type="date" name="ink_acquired" class="w-full border rounded-lg p-2">
+                </div>
+
+                {{-- Expiry Date --}}
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Expiry Date</label>
-                    <input type="date" name="toner_acquiry" class="w-full border rounded-lg p-2">
+                    <input type="date" name="ink_expiry" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
+
+                {{-- Brand --}}
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Brand</label>
-                    <select name="lt-brand" class="w-full border rounded-lg p-2">
-                        <option value="Laptop">...</option>
-                        <option value="Laptop">Dell</option>
+                    <select name="ink_brand" class="w-full border rounded-lg p-2">
+                        <option value="">Select Brand</option>
+                        <option value="HP">HP</option>
+                        <option value="Canon">Canon</option>
+                        <option value="Epson">Epson</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
-                <div>
+
+                {{-- Model --}}
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Model</label>
-                    <input type="text" name="lt-model" class="w-full border rounded-lg p-2">
+                    <input type="text" name="ink_model" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
+
+                {{-- Type --}}
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Type</label>
-                    <input type="text" name="lt-os" class="w-full border rounded-lg p-2">
+                    <input type="text" name="ink_type" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
+
+                {{-- Color --}}
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Color</label>
-                    <input type="text" name="lt-processor" class="w-full border rounded-lg p-2">
+                    <input type="text" name="ink_color" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
-                    <label class="block text-sm font-medium">Capacity</label>
-                    <input type="text" name="lt-RAM" class="w-full border rounded-lg p-2">
+
+                {{-- Capacity/Volume --}}
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Capacity/Volume</label>
+                    <input type="text" name="ink_capacity" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
+
+                {{-- Quantity --}}
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Quantity</label>
-                    <input type="text" name="lt-storage" class="w-full border rounded-lg p-2">
+                    <input type="number" name="ink_quantity" class="w-full border rounded-lg p-2">
                 </div>
             </div>
+
             {{-- Buttons --}}
-            <div class="flex justify-end gap-3 mt-4">
+            <div class="flex justify-end gap-3 mt-4 flex-wrap">
                 <button type="button"
                     onclick="document.getElementById('addink').classList.add('hidden')"
                     class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">
                     Cancel
                 </button>
+
                 <button type="submit"
                     class="px-4 py-2 bg-main text-white rounded-lg hover:bg-button_hover">
                     Save
                 </button>
             </div>
         </form>
+
         {{-- Close button --}}
         <button onclick="document.getElementById('addink').classList.add('hidden')"
             class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-lg">

@@ -7,7 +7,7 @@
     <style>[x-cloak] { display: none !important; }</style>
 </head>
 <body 
-    x-data="{ profileOpen: false, sidebarOpen: window.innerWidth >= 1024, masterModal: false }"
+    x-data="{ profileOpen: false, sidebarOpen: window.innerWidth >= 1024, masterModal: false, informationModal: false }"
     x-init="window.addEventListener('resize', () => { sidebarOpen = window.innerWidth >= 1024; });"
     class="bg-gray-100"
 >
@@ -116,45 +116,59 @@
 </li>
                 <li><a href="/admin/software" class="block px-4 py-2 rounded hover:bg-button_hover">Software</a></li>
                 <li x-data="{ settingsOpen: false }">
-                    <button @click="settingsOpen = !settingsOpen" class="flex items-center justify-between w-full px-4 py-2 rounded hover:bg-button_hover focus:outline-none">
-                        <span>Settings</span>
-                        <svg :class="settingsOpen ? 'rotate-180' : ''" class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    <ul x-show="settingsOpen" x-cloak class="ml-6 mt-1 space-y-1">
-                        <li><a href="/admin/viewAccounts" class="block px-4 py-2 rounded hover:bg-button_hover">Users Management</a></li>
-                    </ul>
-                    <ul x-show="settingsOpen" x-cloak class="ml-6 mt-1 space-y-1">
-                      <button 
-                        @click="masterModal = true" 
-                        class="block w-full text-left px-4 py-2 rounded hover:bg-button_hover">
-                        Item Settings
-                    </button>
-                     <li x-data="{ InfoSettings: false }">
-                    <button @click="InfoSettings = !InfoSettings" class="flex items-center justify-between w-full px-4 py-2 rounded hover:bg-button_hover focus:outline-none">
-                        <span>Information Settings</span>
-                        <svg :class="InfoSettings ? 'rotate-180' : ''" class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </button>
-                    
-                    <ul x-show="InfoSettings" x-cloak class="ml-6 mt-1 space-y-1">
-                        <li>
-                    <button 
-                        @click="masterModal = true" 
-                        class="block w-full text-left px-4 py-2 rounded hover:bg-button_hover">
+    <button 
+        @click="settingsOpen = !settingsOpen" 
+        class="flex items-center justify-between w-full px-4 py-2 rounded hover:bg-button_hover focus:outline-none"
+    >
+        <span>Settings</span>
+        <svg :class="settingsOpen ? 'rotate-180' : ''" class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+    </button>
+
+    <ul x-show="settingsOpen" x-cloak class="ml-6 mt-1 space-y-1">
+
+        <!-- Users Management -->
+        <li>
+            <a href="/admin/viewAccounts" class="block px-4 py-2 rounded hover:bg-button_hover">
+                Users Management
+            </a>
+        </li>
+
+        <li>
+            <button 
+                @click="informationModal = true" 
+                class="w-full text-left block px-4 py-2 rounded hover:bg-button_hover"
+    >
+                Information Settings
+            </button>
+        </li>
+
+        <!-- Item Settings Dropdown -->
+        <li x-data="{ itemSettingsOpen: false }">
+            <button 
+                @click="itemSettingsOpen = !itemSettingsOpen" 
+                class="flex items-center justify-between w-full px-4 py-2 rounded hover:bg-button_hover focus:outline-none"
+            >
+                <span>Item Settings</span>
+                <svg :class="itemSettingsOpen ? 'rotate-180' : ''" class="w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+
+            <ul x-show="itemSettingsOpen" x-cloak class="ml-6 mt-1 space-y-1">
+                <li>
+                    <button @click="masterModal = true" class="block w-full text-left px-4 py-2 rounded hover:bg-button_hover">
                         Hardware
                     </button>
-                    <button 
-                        @click="masterModal = true" 
-                        class="block w-full text-left px-4 py-2 rounded hover:bg-button_hover">
-                        Endorsement
-                    </button>
-                        </li>
-                    </ul>
                 </li>
             </ul>
+        </li>
+
+    </ul>
+</li>
+
+
         </nav>
     </div>
 
@@ -172,6 +186,8 @@
 </main>
 
     @include('components.masterDataModal')
+    @include('components.informationSettings')
+
     <script src="//unpkg.com/alpinejs" defer></script>
 </body>
 </html>

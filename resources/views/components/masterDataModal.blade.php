@@ -2,21 +2,28 @@
     x-show="masterModal" 
     x-cloak 
     x-data="{ tab: 'brand' }"  
-    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
 
     <div class="bg-white rounded-lg w-full max-w-3xl shadow-lg relative flex flex-col"
          @click.away="masterModal = false">
 
-        <form method="POST" action="#" class="flex flex-col max-h-[90vh]">
+        <form method="POST" action="#" class="flex flex-col max-h-[90vh] overflow-auto">
             @csrf
 
-            <!-- Header with navigation (fixed) -->
-            <div class="flex flex-wrap items-center border-b pb-2 px-6 pt-6 flex-shrink-0">
-                <button @click.prevent="tab = 'cpu'" :class="tab === 'cpu' ? 'font-semibold underline text-main' : 'text-gray-600'" class="mr-4">CPU</button>
-                <button @click.prevent="tab = 'memory'" :class="tab === 'memory' ? 'font-semibold underline text-main' : 'text-gray-600'" class="mr-4">Memory</button>
-                <button @click.prevent="tab = 'storage'" :class="tab === 'storage' ? 'font-semibold underline text-main' : 'text-gray-600'" class="mr-4">Storage</button>
-                <button @click.prevent="tab = 'gpu'" :class="tab === 'gpu' ? 'font-semibold underline text-main' : 'text-gray-600'" class="mr-4">GPU</button>
-             
+            <!-- Modal Title / Label -->
+            <div class="px-6 py-3 bg-[#EDEDED] rounded-t-lg">
+                <h2 class="text-lg font-semibold text-gray-800">Add New Item Option</h2>
+                <p class="text-sm text-gray-600">
+                    Fill out details to create a new selectable option for items.
+                </p>
+            </div>
+
+            <!-- Header with navigation -->
+            <div class="flex flex-wrap items-center pb-2 px-6 pt-4 flex-shrink-0 gap-2">
+                <button @click.prevent="tab = 'cpu'" :class="tab === 'cpu' ? 'font-semibold underline text-main' : 'text-gray-600'" class="mr-2">CPU</button>
+                <button @click.prevent="tab = 'memory'" :class="tab === 'memory' ? 'font-semibold underline text-main' : 'text-gray-600'" class="mr-2">Memory</button>
+                <button @click.prevent="tab = 'storage'" :class="tab === 'storage' ? 'font-semibold underline text-main' : 'text-gray-600'" class="mr-2">Storage</button>
+                <button @click.prevent="tab = 'gpu'" :class="tab === 'gpu' ? 'font-semibold underline text-main' : 'text-gray-600'" class="mr-2">GPU</button>
             </div>
 
             <!-- Modal Body (auto-resizing) -->
@@ -27,187 +34,147 @@
                     'flex-1 overflow-y-auto max-h-[400px]': tab === 'memory'
                 }"
             >
-                <!-- Brand -->
-                <div x-show="tab === 'cpu'">
-                    <div class="flex items-center space-x-4">                    
+                <!-- CPU -->
+                <div x-show="tab === 'cpu'" class="flex flex-wrap items-center gap-4">
+                    <div class="flex-1 min-w-[120px]">
                         <label class="block text-sm font-medium">Brand</label>
-                         <select name="#" class="w-full border rounded-lg p-2">
-                                <option value="" disabled selected>Select Brand</option>
-                                <option value="....">...</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
-                            </select>
-
-                    <label class="block text-sm font-medium">Series</label>
-                        <div class="relative w-full">
-                            <select name="#" class="w-full border rounded-lg p-2">
-                                <option value="" disabled selected>Select Series</option>
-                                <option value="....">...</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
-                            </select>
-                        </div>
-      <label class="block text-sm font-medium">Model</label>
-                        <div class="relative w-full">
-                           <select name="#" class="w-full border rounded-lg p-2">
-                                <option value="" disabled selected>Select Model</option>
-                                <option value="....">...</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
-                            </select>
-                        </div>
-
+                        <select name="cpu_brand" class="w-full border rounded-lg p-2">
+                            <option value="" disabled selected>Select Brand</option>
+                            <option>Intel</option>
+                            <option>AMD</option>
+                        </select>
                     </div>
-                    
-                    
+
+                    <div class="flex-1 min-w-[120px]">
+                        <label class="block text-sm font-medium">Series</label>
+                        <select name="cpu_series" class="w-full border rounded-lg p-2">
+                            <option value="" disabled selected>Select Series</option>
+                            <option>Core i7</option>
+                            <option>Ryzen 7</option>
+                        </select>
+                    </div>
+
+                    <div class="flex-1 min-w-[120px]">
+                        <label class="block text-sm font-medium">Model</label>
+                        <select name="cpu_model" class="w-full border rounded-lg p-2">
+                            <option value="" disabled selected>Select Model</option>
+                            <option>13700K</option>
+                            <option>7700X</option>
+                        </select>
+                    </div>
                 </div>
 
-                <!-- RAM -->
-                <div x-show="tab === 'memory'" class="space-y-4">
-                    <div class="flex items-center space-x-4">
+                <!-- Memory -->
+                <div x-show="tab === 'memory'" class="flex flex-wrap gap-4">
+                    <div class="flex-1 min-w-[120px]">
                         <label class="block text-sm font-medium">Brand</label>
-                        <select name="#" class="w-full border rounded-lg p-2">
+                        <select name="memory_brand" class="w-full border rounded-lg p-2">
                             <option value="" disabled selected>Select Brand</option>
-                            <option value="....">...</option>
-                            <option value="....">....</option>
-                            <option value="....">....</option>
-                            <option value="....">....</option>
+                            <option>Corsair</option>
+                            <option>G.Skill</option>
                         </select>
-                        <label class="block text-sm font-medium">Model</label>
-                        <div class="relative w-full">
-                            <select name="#" class="w-full border rounded-lg p-2">
-                                <option value="" disabled selected>Select Series</option>
-                                <option value="....">...</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
-                            </select>
-                        </div>
-                        <label class="block text-sm font-medium">Type</label>
-                        <div class="relative w-full">
-                            <select name="#" class="w-full border rounded-lg p-2">
-                                <option value="" disabled selected>Select Model</option>
-                                <option value="....">...</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
-                            </select>
-                        </div>
                     </div>
-                    
-                    <div class="flex items-center space-x-4">
-                        <label class="block text-sm font-medium">Capacity</label>
-                        <select name="#" class="w-full border rounded-lg p-2">
-                            <option value="" disabled selected>Select Type</option>
-                            <option value="....">...</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
+                    <div class="flex-1 min-w-[120px]">
+                        <label class="block text-sm font-medium">Model</label>
+                        <select name="memory_model" class="w-full border rounded-lg p-2">
+                            <option value="" disabled selected>Select Model</option>
+                            <option>Trident Z</option>
+                            <option>Vengeance</option>
                         </select>
+                    </div>
+                    <div class="flex-1 min-w-[120px]">
+                        <label class="block text-sm font-medium">Type</label>
+                        <select name="memory_type" class="w-full border rounded-lg p-2">
+                            <option value="" disabled selected>Select Type</option>
+                            <option>DDR4</option>
+                            <option>DDR5</option>
+                        </select>
+                    </div>
+                    <div class="flex-1 min-w-[120px]">
+                        <label class="block text-sm font-medium">Capacity</label>
+                        <select name="memory_capacity" class="w-full border rounded-lg p-2">
+                            <option value="" disabled selected>Select Capacity</option>
+                            <option>16GB</option>
+                            <option>32GB</option>
+                        </select>
+                    </div>
+                    <div class="flex-1 min-w-[120px]">
                         <label class="block text-sm font-medium">Speed</label>
-                        <select name="ram_capacity" class="w-full border rounded-lg p-2">
+                        <select name="memory_speed" class="w-full border rounded-lg p-2">
                             <option value="" disabled selected>Select Speed</option>
-                            <option value="....">...</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
+                            <option>3200MT/s</option>
+                            <option>6400MT/s</option>
                         </select>
                     </div>
                 </div>
 
                 <!-- Storage -->
-                <div x-show="tab === 'storage'">
-                        <div class="flex items-center space-x-4">
+                <div x-show="tab === 'storage'" class="flex flex-wrap gap-4">
+                    <div class="flex-1 min-w-[120px]">
                         <label class="block text-sm font-medium">Brand</label>
-                        <select name="#" class="w-full border rounded-lg p-2">
+                        <select name="storage_brand" class="w-full border rounded-lg p-2">
                             <option value="" disabled selected>Select Brand</option>
-                            <option value="....">...</option>
-                            <option value="....">....</option>
-                            <option value="....">....</option>
-                            <option value="....">....</option>
+                            <option>Samsung</option>
+                            <option>WD</option>
                         </select>
-                         <label class="block text-sm font-medium">Model</label>
-                        <div class="relative w-full">
-                            <select name="#" class="w-full border rounded-lg p-2">
-                                <option value="" disabled selected>Select Series</option>
-                                <option value="....">...</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
-                            </select>
-                        </div>
+                    </div>
+                    <div class="flex-1 min-w-[120px]">
+                        <label class="block text-sm font-medium">Model</label>
+                        <select name="storage_model" class="w-full border rounded-lg p-2">
+                            <option value="" disabled selected>Select Model</option>
+                            <option>970 EVO</option>
+                            <option>Blue SN570</option>
+                        </select>
+                    </div>
+                    <div class="flex-1 min-w-[120px]">
                         <label class="block text-sm font-medium">Type</label>
-                        <div class="relative w-full">
-                            <select name="#" class="w-full border rounded-lg p-2">
-                                <option value="" disabled selected>Select Type</option>
-                                <option value="....">...</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
-                                <option value="....">....</option>
-                            </select>
-</div>
-</div>                </div>
-
-                <!-- Processor -->
-<div x-show="tab === 'gpu'">
-    <div class="flex items-center space-x-4 mb-4">
-        <div class="w-full">
-            <label class="block text-sm font-medium">Brand</label>
-            <select name="gpu_brand" class="w-full border rounded-lg p-2">
-                <option value="" disabled selected>Select Brand</option>
-                <option value="NVIDIA">NVIDIA</option>
-                <option value="AMD">AMD</option>
-            </select>
-        </div>
-        <div class="w-full">
-            <label class="block text-sm font-medium">Model</label>
-            <select name="gpu_model" class="w-full border rounded-lg p-2">
-                <option value="" disabled selected>Select Model</option>
-                <option value="RTX 4090">RTX 4090</option>
-                <option value="RX 7900 XTX">RX 7900 XTX</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="flex items-center space-x-4">
-        <div class="w-full">
-            <label class="block text-sm font-medium">Memory Type</label>
-            <select name="memory_type" class="w-full border rounded-lg p-2">
-                <option value="" disabled selected>Select Memory Type</option>
-                <option value="GDDR6">GDDR6</option>
-                <option value="GDDR6X">GDDR6X</option>
-            </select>
-        </div>
-        <div class="w-full">
-            <label class="block text-sm font-medium">Capacity</label>
-            <select name="memory_capacity" class="w-full border rounded-lg p-2">
-                <option value="" disabled selected>Select Capacity</option>
-                <option value="8GB">8GB</option>
-                <option value="16GB">16GB</option>
-                <option value="24GB">24GB</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-                <!-- Building -->
-                <div x-show="tab === 'building'">
-                    <h2 class="text-lg font-semibold mb-2">Manage Buildings</h2>
-                    <input type="text" name="building_name" placeholder="Enter Building Name" class="w-full border rounded-lg p-2">
+                        <select name="storage_type" class="w-full border rounded-lg p-2">
+                            <option value="" disabled selected>Select Type</option>
+                            <option>SSD</option>
+                            <option>HDD</option>
+                        </select>
+                    </div>
                 </div>
 
-                <!-- College -->
-                <div x-show="tab === 'college'">
-                    <h2 class="text-lg font-semibold mb-2">Manage College / Department</h2>
-                    <input type="text" name="college_name" placeholder="Enter College/Department" class="w-full border rounded-lg p-2">
+                <!-- GPU -->
+                <div x-show="tab === 'gpu'" class="flex flex-wrap gap-4">
+                    <div class="flex-1 min-w-[120px]">
+                        <label class="block text-sm font-medium">Brand</label>
+                        <select name="gpu_brand" class="w-full border rounded-lg p-2">
+                            <option value="" disabled selected>Select Brand</option>
+                            <option>NVIDIA</option>
+                            <option>AMD</option>
+                        </select>
+                    </div>
+                    <div class="flex-1 min-w-[120px]">
+                        <label class="block text-sm font-medium">Model</label>
+                        <select name="gpu_model" class="w-full border rounded-lg p-2">
+                            <option value="" disabled selected>Select Model</option>
+                            <option>RTX 4090</option>
+                            <option>RX 7900 XTX</option>
+                        </select>
+                    </div>
+                    <div class="flex-1 min-w-[120px]">
+                        <label class="block text-sm font-medium">Memory Type</label>
+                        <select name="gpu_memory_type" class="w-full border rounded-lg p-2">
+                            <option value="" disabled selected>Select Memory Type</option>
+                            <option>GDDR6</option>
+                            <option>GDDR6X</option>
+                        </select>
+                    </div>
+                    <div class="flex-1 min-w-[120px]">
+                        <label class="block text-sm font-medium">Capacity</label>
+                        <select name="gpu_memory_capacity" class="w-full border rounded-lg p-2">
+                            <option value="" disabled selected>Select Capacity</option>
+                            <option>8GB</option>
+                            <option>16GB</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
-            <!-- Footer (fixed) -->
-            <div class="flex flex-col md:flex-row md:justify-end md:gap-3 px-6 py-4 border-t flex-shrink-0 gap-2 items-center">
+            <!-- Footer -->
+            <div class="flex flex-col md:flex-row md:justify-end md:gap-3 px-6 py-4 gap-2 items-center">
                 <button type="button" 
                         @click="masterModal = false"
                         class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 w-full md:w-auto">
@@ -215,7 +182,7 @@
                 </button>
                 <button type="submit" 
                         class="px-4 py-2 bg-main text-white rounded-lg hover:bg-button_hover w-full md:w-auto">
-                    Save
+                    Add
                 </button>
             </div>
         </form>

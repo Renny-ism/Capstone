@@ -24,8 +24,8 @@
                 
                 {{-- Dropdown Menu for Actions --}}
                 <div x-data="{ open: false }" class="relative w-full md:w-auto">
-                    <button @click="open = !open" type="button" class="inline-flex items-center justify-center px-4 py-2 bg-[#fdb827] text-white rounded-lg hover:bg-button_hover focus:outline-none w-full md:w-auto">
-                        Other
+                    <button @click="open = !open" type="button" class="inline-flex items-center justify-center px-4 py-2 bg-main text-white rounded-lg hover:bg-button_hover focus:outline-none w-full md:w-auto">
+                        Others
                         <svg class="ml-2 -mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
@@ -70,12 +70,11 @@
                     <tr class="bg-button_hover text-white">
                         <th class="px-4 py-3">Asset Code</th>
                         <th class="px-4 py-3">Date Acquired</th>
-                        <td class="px-4 py-3">Cost</td>
                         <th class="px-4 py-3">Brand</th>
                         <th class="px-4 py-3">Model</th>
                         <th class="px-4 py-3">Operating System</th>
                         <th class="px-4 py-3">Processor</th>
-                         <th class="px-4 py-3">MOtherboard</th>
+                         <th class="px-4 py-3">Motherboard</th>
                         <th class="px-4 py-3">RAM</th>
                         <th class="px-4 py-3">Storage</th>
                         <th class="px-4 py-3">Graphics</th>
@@ -90,8 +89,6 @@
                     <tr class="border-b hover:bg-gray-50">
                         <td class="px-4 py-3">DESK-001</td>
                         <td class="px-4 py-3">2021-08-12</td>
-                                                <td class="px-4 py-3">45,000.00</td>
-
                         <td class="px-4 py-3">Lenovo</td>
                         <td class="px-4 py-3">ThinkCentre M720</td>
                           <td class="px-4 py-3">Windows 10 Pro</td>
@@ -120,84 +117,85 @@
     </div>
 </div>
 {{-- Modal --}}
-<div id="addDesktopModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+<div id="addDesktopModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-lg w-full max-w-3xl shadow-lg p-6 relative">
         <h2 class="text-xl font-semibold mb-4">Add Record</h2>
         <form action="" method="POST" class="space-y-4">
             @csrf
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
+            <div class="flex flex-wrap gap-4">
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Asset Code</label>
                     <input type="text" name="dt_asset_code" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Brand</label>
                     <select name="dt_brand" class="w-full border rounded-lg p-2">
-                        <option value="Laptop">...</option>
-                        <option value="Desktop">Lenovo</option>
+                        <option value="">Select Brand</option>
+                        <option value="Lenovo">Lenovo</option>
+                        <option value="HP">HP</option>
                     </select>
                 </div>
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Model</label>
                     <input type="text" name="dt_model" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Operating System</label>
                     <input type="text" name="dt_os" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Processor</label>
                     <input type="text" name="dt_processor" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
-                    <label class="block text-sm font-medium">MOtherboard</label>
-                    <input type="text" name="dt_mOtherboard" class="w-full border rounded-lg p-2">
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Motherboard</label>
+                    <input type="text" name="dt_motherboard" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">RAM</label>
                     <input type="text" name="dt_RAM" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Storage</label>
                     <input type="text" name="dt_storage" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Graphics</label>
                     <input type="text" name="dt_graphics" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Monitor</label>
                     <input type="text" name="dt_monitor" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Keyboard</label>
                     <input type="text" name="dt_keyboard" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Mouse</label>
                     <input type="text" name="dt_mouse" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Building</label>
                     <select name="dt_building" class="w-full border rounded-lg p-2">
-                        <option value="">...</option>
+                        <option value="">Select Building</option>
                         <option value="FDT">FDT</option>
                         <option value="PGT">PGT</option>
                         <option value="LRC">LRC</option>
                         <option value="BEdD">BEdD</option>
                     </select>
                 </div>
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Location</label>
                     <input type="text" name="dt_loc" class="w-full border rounded-lg p-2">
                 </div>
-            </div>
-            <div>
-                <label class="block text-sm font-medium">Acquired Year</label>
-                <input type="date" name="dt_loc" class="w-full border rounded-lg p-2">
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Acquired Year</label>
+                    <input type="date" name="dt_year_acquired" class="w-full border rounded-lg p-2">
+                </div>
             </div>
             {{-- Buttons --}}
-            <div class="flex justify-end gap-3 mt-4">
+            <div class="flex justify-end gap-3 mt-4 flex-wrap">
                 <button type="button" onclick="document.getElementById('addDesktopModal').classList.add('hidden')"
                     class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">
                     Cancel

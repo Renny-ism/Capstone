@@ -4,10 +4,10 @@
     <div class="w-full">
         {{-- Header with Search, Button, and Dropdown --}}
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-3">
-            <h1 class="text-2xl font-semibold">Laptop</h1>
+            <h1 class="text-2xl font-semibold">CCTV</h1>
             <div class="flex flex-col md:flex-row items-center gap-2 w-full md:w-auto">
                 <div class="relative w-full">
-                    <input type="text" placeholder="Search laptop..." class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-main transition-colors">
+                    <input type="text" placeholder="Search telephone..." class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-main transition-colors">
                     <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
@@ -25,14 +25,14 @@
                 {{-- Dropdown Menu for Actions --}}
                 <div x-data="{ open: false }" class="relative w-full md:w-auto">
                     <button @click="open = !open" type="button" class="inline-flex items-center justify-center px-4 py-2 bg-main text-white rounded-lg hover:bg-button_hover focus:outline-none w-full md:w-auto">
-                        Others
+                        Other
                         <svg class="ml-2 -mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
                     </button>
                     <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
                         <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                            <a href="#" onclick="event.preventDefault(); document.getElementById('addLaptopModal').classList.remove('hidden'); open = false;" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('addTele').classList.remove('hidden'); open = false;" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                                     <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd" />
                                 </svg>
@@ -63,6 +63,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Table -->
         <div class="bg-white rounded-lg shadow-md overflow-x-auto">
             <table class="min-w-full text-sm text-left border-collapse">
@@ -70,13 +71,11 @@
                     <tr class="bg-button_hover text-white">
                         <th class="px-4 py-3"></th>
                         <th class="px-4 py-3">Asset Code</th>
-                        <th class="px-4 py-3">Date Acquired</th>
+                        <th class="px-4 py-3">Acquired Year</th>
                         <th class="px-4 py-3">Brand</th>
                         <th class="px-4 py-3">Model</th>
-                        <th class="px-4 py-3">Operating System</th>
-                        <th class="px-4 py-3">Processor</th>
-                        <th class="px-4 py-3">RAM</th>      
-                        <th class="px-4 py-3">Storage</th>
+                        <th class="px-4 py-3">Building</th>
+                        <th class="px-4 py-3">Location</th>
                         <th class="px-4 py-3">Status</th>
                         <th class="px-4 py-3">Actions</th>
                     </tr>
@@ -92,11 +91,9 @@
                         <td class="px-4 py-3">Dell</td>
                         <td class="px-4 py-3">Latitude 5420</td>
                         <td class="px-4 py-3">Windows 11 Pro</td>
-                        <td class="px-4 py-3">Intel i5-1135G7</td>
-                        <td class="px-4 py-3">8GB DDR4</td>
-                        <td class="px-4 py-3">512GB SSD</td>                        
+                        <td class="px-4 py-3">Intel i5-1135G7</td>                    
                         <td class="px-4 py-3">Under Repair</td>
-                        <td class="px-4 py-3"><x-action_laptop/></td>
+                        <td class="px-4 py-3"><x-actions_telephone/></td>
                     </tr>
                     </div>
                     </tr>
@@ -104,70 +101,84 @@
                 </tbody>
             </table>
         </div>
-          <div class="flex items-center justify-end gap-2 p-4">
-            <button class="px-3 py-1 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300">Previous</button>
-            <button class="px-3 py-1 text-white bg-main rounded-lg">1</button>
-            <button class="px-3 py-1 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300">2</button>
-            <button class="px-3 py-1 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300">Next</button>
-        </div>
+        <div class="flex items-center justify-end gap-2 p-4">
+                <button class="px-3 py-1 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300">Previous</button>
+                <button class="px-3 py-1 text-white bg-main rounded-lg">1</button>
+                <button class="px-3 py-1 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300">2</button>
+                <button class="px-3 py-1 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300">Next</button>
+            </div>
     </div>
 </div>
 {{-- Modal --}}
-<div id="addLaptopModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+<div id="addTele"
+    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+
     <div class="bg-white rounded-lg w-full max-w-3xl shadow-lg p-6 relative">
         <h2 class="text-xl font-semibold mb-4">Add Record</h2>
 
         <form action="" method="POST" class="space-y-4">
             @csrf
-            <div class="flex flex-wrap gap-4">
-                <div class="flex-1 min-w-[150px]">
-                    <label class="block text-sm font-medium">Asset Code</label>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-medium">Asset Code </label>
                     <input type="text" name="lt_asset_code" class="w-full border rounded-lg p-2">
                 </div>
-                <div class="flex-1 min-w-[150px]">
+                {{-- Software Name --}}
+                <div>
+                    <label class="block text-sm font-medium">Date Acquired</label>
+                    <input type="date" name="lt-storage" class="w-full border rounded-lg p-2">
+                </div>
+
+                <div>
                     <label class="block text-sm font-medium">Brand</label>
-                    <select name="lt_brand" class="w-full border rounded-lg p-2">
-                        <option value="">Select Brand</option>
-                        <option value="Dell">Dell</option>
-                        <option value="HP">HP</option>
+                    <select name="lt-brand" class="w-full border rounded-lg p-2">
+                         <option value="Laptop">...</option>     
+                        <option value="Laptop">Dell</option>     
                     </select>
                 </div>
-                <div class="flex-1 min-w-[150px]">
+
+                <div>
                     <label class="block text-sm font-medium">Model</label>
-                    <input type="text" name="lt_model" class="w-full border rounded-lg p-2">
+                    <input type="text" name="lt-model" class="w-full border rounded-lg p-2">
                 </div>
-                <div class="flex-1 min-w-[150px]">
-                    <label class="block text-sm font-medium">Operating System</label>
-                    <input type="text" name="lt_os" class="w-full border rounded-lg p-2">
+
+                <div>
+
+                <label class="block text-sm font-medium">Building</label>
+                    <select name="dt_building" class="w-full border rounded-lg p-2">
+                        <option value="">...</option>
+                        <option value="FDT">FDT</option>
+                        <option value="PGT">PGT</option>
+                        <option value="LRC">LRC</option>
+                        <option value="BEdD">BEdD</option>
+                    </select>
                 </div>
-                <div class="flex-1 min-w-[150px]">
-                    <label class="block text-sm font-medium">Processor</label>
-                    <input type="text" name="lt_processor" class="w-full border rounded-lg p-2">
-                </div>
-                <div class="flex-1 min-w-[150px]">
-                    <label class="block text-sm font-medium">RAM</label>
-                    <input type="text" name="lt_RAM" class="w-full border rounded-lg p-2">
-                </div>
-                <div class="flex-1 min-w-[150px]">
-                    <label class="block text-sm font-medium">Storage</label>
-                    <input type="text" name="lt_storage" class="w-full border rounded-lg p-2">
-                </div>
-                <div class="flex-1 min-w-[150px]">
-                    <label class="block text-sm font-medium">Date Acquired</label>
-                    <input type="date" name="lt_date_acquired" class="w-full border rounded-lg p-2">
+                <div>
+                    <label class="block text-sm font-medium">Department</label>
+                    <input type="text" name="dt_loc" class="w-full border rounded-lg p-2">
                 </div>
             </div>
-
+            
             {{-- Buttons --}}
-            <div class="flex justify-end gap-3 mt-4 flex-wrap">
-                <button type="button" onclick="document.getElementById('addLaptopModal').classList.add('hidden')"
-                    class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">Cancel</button>
-                <button type="submit" class="px-4 py-2 bg-main text-white rounded-lg hover:bg-button_hover">Save</button>
+            <div class="flex justify-end gap-3 mt-4">
+                <button type="button"
+                    onclick="document.getElementById('addTele').classList.add('hidden')"
+                    class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">
+                    Cancel
+                </button>
+
+                <button type="submit"
+                    class="px-4 py-2 bg-main text-white rounded-lg hover:bg-button_hover">
+                    Save
+                </button>
             </div>
         </form>
 
         {{-- Close button --}}
-        <button onclick="document.getElementById('addLaptopModal').classList.add('hidden')"
-            class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-lg">&times;</button>
+        <button onclick="document.getElementById('addTele').classList.add('hidden')"
+            class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-lg">
+            &times;
+        </button>
     </div>
 </div>

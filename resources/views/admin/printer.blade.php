@@ -32,7 +32,7 @@
                     </button>
                     <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
                         <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                            <a href="#" onclick="event.preventDefault(); document.getElementById('addDesktopModal').classList.remove('hidden'); open = false;" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('addPrinterModal').classList.remove('hidden'); open = false;" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
                                     <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25V15a.75.75 0 0 0 1.5 0v-2.25H15a.75.75 0 0 0 0-1.5h-2.25V9Z" clip-rule="evenodd" />
                                 </svg>
@@ -110,85 +110,80 @@
     </div>
 </div>
 {{-- Modal --}}
-<div id="addPrinterModal"
-    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-
+<div id="addPrinterModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
     <div class="bg-white rounded-lg w-full max-w-3xl shadow-lg p-6 relative">
-        <h2 class="text-xl font-semibold mb-4">Add Record</h2>
+        <h2 class="text-xl font-semibold mb-4">Add Printer</h2>
 
         <form action="" method="POST" class="space-y-4">
             @csrf
-            <div>
-                <label class="block text-sm font-medium">Acquired Year </label>
-                <input type="date" name="printer_acquired" class="w-full border rounded-lg p-2">
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {{-- Software Name --}}
-                <div>
-                    <label class="block text-sm font-medium">Asset Code </label>
-                    <input type="text" name="printer_asset_code" class="w-full border rounded-lg p-2">
+            <div class="flex flex-wrap gap-4">
+
+                
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Asset Code</label>
+                    <input type="text" name="asset_code" class="w-full border rounded-lg p-2">
                 </div>
 
-                <div>
+                
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Brand</label>
-                    <select name="printer_brand" class="w-full border rounded-lg p-2">
-                         <option value="Laptop">...</option>     
-                        <option value="Laptop">Epson</option>     
-                         <option value="Laptop">HP</option>  
-                         <option value="Laptop">Canon</option>     
-                         <option value="Laptop">BrOther</option>   
-
+                    <select name="brand" class="w-full border rounded-lg p-2">
+                        <option value="" disabled selected>Select brand</option>
+                        <option value="Epson">Epson</option>
+                        <option value="HP">HP</option>
+                        <option value="Canon">Canon</option>
+                        <option value="Brother">Brother</option>
                     </select>
                 </div>
 
-                <div>
+                
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Model</label>
-                    <input type="text" name="printer_model" class="w-full border rounded-lg p-2">
+                    <input type="text" name="model" class="w-full border rounded-lg p-2">
                 </div>
 
-                <div>
+                
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Type</label>
-                    <input type="text" name="printer_type" class="w-full border rounded-lg p-2">
+                    <input type="text" name="type" class="w-full border rounded-lg p-2">
                 </div>
 
-                <div>
+                <!-- Additional fields -->
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Building</label>
-                    <select name="dt_building" class="w-full border rounded-lg p-2">
-                        <option value="">...</option>
+                    <select name="building" class="w-full border rounded-lg p-2">
+                        <option value="" disabled selected>Select building</option>
                         <option value="FDT">FDT</option>
                         <option value="PGT">PGT</option>
                         <option value="LRC">LRC</option>
-                        <option value="BEdD">BEdD</option>
+                        <option value="BED">BED</option>
                     </select>
                 </div>
- 
-                <div>
+
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Location</label>
-                    <input type="text" name="printer_location" class="w-full border rounded-lg p-2">
+                    <input type="text" name="location" class="w-full border rounded-lg p-2">
                 </div>
-             
-               
+
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Acquired Year</label>
+                    <input type="date" name="acquired_year" class="w-full border rounded-lg p-2">
+                </div>
+
             </div>
 
             {{-- Buttons --}}
-            <div class="flex justify-end gap-3 mt-4">
-                <button type="button"
-                    onclick="document.getElementById('addPrinterModal').classList.add('hidden')"
-                    class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">
-                    Cancel
-                </button>
-
-                <button type="submit"
-                    class="px-4 py-2 bg-main text-white rounded-lg hover:bg-button_hover">
-                    Save
-                </button>
+            <div class="flex justify-end gap-3 mt-4 flex-wrap">
+                <button type="button" onclick="document.getElementById('addPrinterModal').classList.add('hidden')"
+                    class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">Cancel</button>
+                <button type="submit" class="px-4 py-2 bg-main text-white rounded-lg hover:bg-button_hover">Save</button>
             </div>
         </form>
 
         {{-- Close button --}}
-        <button onclick="document.getElementById('').classList.add('hidden')"
-            class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-lg">
-            &times;
-        </button>
+        <button onclick="document.getElementById('addPrinterModal').classList.add('hidden')"
+            class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-lg">&times;</button>
     </div>
 </div>
+
+

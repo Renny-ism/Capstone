@@ -5,7 +5,7 @@
     <div class="w-full">
         {{-- Header --}}
         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-3">
-            <h1 class="text-2xl font-semibold">PRT-001 Maintenance</h1>
+            <h1 class="text-2xl font-semibold">[asset code] Maintenance</h1>
             <button onclick="document.getElementById('addLaptopModal').classList.remove('hidden')" 
                 class="inline-flex items-center justify-center px-4 py-2 bg-main text-white rounded-lg hover:bg-button_hover">
                 + Add Record
@@ -21,6 +21,7 @@
                         <th class="px-4 py-3">Date of Maintenance</th>
                         <th class="px-4 py-3">Description</th>
                         <th class="px-4 py-3">Cost</th>
+                        <th class="px-4 py-3">Actions</th>
                     </tr>
                 </thead>
                 <tbody> <!-- dummy data --> 
@@ -28,8 +29,10 @@
                     <tr class="border-b hover:bg-gray-50">
                         <td class="px-4 py-3">MT-001</td>
                         <td class="px-4 py-3">2025-03-12</td>
-                        <td class="px-4 py-3">General cleaning & inspection</td>
-                        <td class="px-4 py-3">₱700</td>
+                        <td class="px-4 py-3">Upgraded RAM (added 8GB)</td>
+                        <td class="px-4 py-3">₱2,500</td>
+                        <td class="px-4 py-3">...</td>
+                            
                     </tr>
                     </div>
                     </tr>
@@ -39,7 +42,7 @@
              
         </div>
         <h4 class="text-lg font-semibold flex items-center gap-2">
-                    <span></span> Total Maintenance Cost: ₱700
+                    <span></span> Total Maintenance Cost: ₱2,500
                 </h4>
     </div>
 </div>

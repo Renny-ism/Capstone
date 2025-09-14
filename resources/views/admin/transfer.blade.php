@@ -19,10 +19,8 @@
                     <tr class="bg-button_hover text-white">
                         <th class="px-4 py-3">Date of Transfer</th>
                         <th class="px-4 py-3">From
-                        <th class="px-4 py-3"></th>
                         <th class="px-4 py-3">To</th>
-                        <th class="px-4 py-3"></th>
-                        <th class="px-4 py-3">Requesterd by</th>
+                        <th class="px-4 py-3">Requested by</th>
                     </tr>
 
                 </thead>
@@ -30,10 +28,8 @@
     <!-- for the actions, lagyan ng ellipses para di redundant tignan yung edit, delete, maintenance-->
                     <tr class="border-b hover:bg-gray-50">
                          <td class="px-4 py-3">2025-03-12</td>
-                        <td class="px-4 py-3">LRC</td>
-                        <td class="px-4 py-3">Computer Laboratory</td>
-                        <td class="px-4 py-3">BedD</td>
-                        <td class="px-4 py-3">304</td>
+                        <td class="px-4 py-3">LRC- Computer Laboratory</td>
+                        <td class="px-4 py-3">BedD-304</td>
                         <td class="px-4 py-3">Sir Oliver</td>
                     </tr>
                     </div>

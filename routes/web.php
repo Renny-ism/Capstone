@@ -69,26 +69,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/telephone', function () {
         return view('admin.telephone');
     });
-});
-
-
-Route::prefix('maintenance')->group(function () {
-    Route::get('m_laptop', function () {
-        return view('maintenance.m_laptop');
+       Route::get('/maintenance', function () {
+        return view('admin.maintenance');
     });
-    Route::get('m_desktop', function () {
-        return view('maintenance.m_desktop');
+     Route::get('/transfer', function () {
+        return view('admin.transfer');
     });
-    Route::get('m_printer', function () {
-        return view('maintenance.m_printer');
-    });
-});
-
-Route::prefix('transfer')->group(function () {
-    Route::get('computer_peripheral', function () {
-        return view('transfer.computer_peripheral');
-    });
-
 });
 Route::prefix('endorsements')->group(function () {
     Route::get('printer', function () {

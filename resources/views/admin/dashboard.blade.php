@@ -23,241 +23,329 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
 
         {{-- Hardware Under Repair --}}
-        <div class="bg-white rounded-xl shadow-md p-6 relative">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-lg font-semibold flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-  <path fill-rule="evenodd" d="M12 6.75a5.25 5.25 0 0 1 6.775-5.025.75.75 0 0 1 .313 1.248l-3.32 3.319c.063.475.276.934.641 1.299.365.365.824.578 1.3.64l3.318-3.319a.75.75 0 0 1 1.248.313 5.25 5.25 0 0 1-5.472 6.756c-1.018-.086-1.87.1-2.309.634L7.344 21.3A3.298 3.298 0 1 1 2.7 16.657l8.684-7.151c.533-.44.72-1.291.634-2.309A5.342 5.342 0 0 1 12 6.75ZM4.117 19.125a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75h-.008a.75.75 0 0 1-.75-.75v-.008Z" clip-rule="evenodd" />
-  <path d="m10.076 8.64-2.201-2.2V4.874a.75.75 0 0 0-.364-.643l-3.75-2.25a.75.75 0 0 0-.916.113l-.75.75a.75.75 0 0 0-.113.916l2.25 3.75a.75.75 0 0 0 .643.364h1.564l2.062 2.062 1.575-1.297Z" />
-  <path fill-rule="evenodd" d="m12.556 17.329 4.183 4.182a3.375 3.375 0 0 0 4.773-4.773l-3.306-3.305a6.803 6.803 0 0 1-1.53.043c-.394-.034-.682-.006-.867.042a.589.589 0 0 0-.167.063l-3.086 3.748Zm3.414-1.36a.75.75 0 0 1 1.06 0l1.875 1.876a.75.75 0 1 1-1.06 1.06L15.97 17.03a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                </svg>
-                Hardware Under Repair
-                </h3>
+<div class="bg-white rounded-xl shadow-md p-6 relative" x-data="{ open: false }">
+    <div class="flex justify-between items-center mb-4">
+        <h3 class="text-lg font-semibold flex items-center gap-2">
             
-            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                <path fill-rule="evenodd" d="M14.5 10a4.5 4.5 0 0 0 4.284-5.882c-.105-.324-.51-.391-.752-.15L15.34 6.66a.454.454 0 0 1-.493.11 3.01 3.01 0 0 1-1.618-1.616.455.455 0 0 1 .11-.494l2.694-2.692c.24-.241.174-.647-.15-.752a4.5 4.5 0 0 0-5.873 4.575c.055.873-.128 1.808-.8 2.368l-7.23 6.024a2.724 2.724 0 1 0 3.837 3.837l6.024-7.23c.56-.672 1.495-.855 2.368-.8.096.007.193.01.291.01ZM5 16a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" clip-rule="evenodd" />
+                <path d="M14.5 11.5c.173 0 .345-.007.514-.022l3.754 3.754a2.5 2.5 0 0 1-3.536 3.536l-4.41-4.41 2.172-2.607c.052-.063.147-.138.342-.196.202-.06.469-.087.777-.067.128.008.257.012.387.012ZM6 4.586l2.33 2.33a.452.452 0 0 1-.08.09L6.8 8.214 4.586 6H3.309a.5.5 0 0 1-.447-.276l-1.7-3.402a.5.5 0 0 1 .093-.577l.49-.49a.5.5 0 0 1 .577-.094l3.402 1.7A.5.5 0 0 1 6 3.31v1.277Z" />
+            </svg>
+
+            Hardware Under Repair
+        </h3>
+    </div>
+
+
+            {{-- Dummy Data --}}
+            @php
+                $hardwareRepairs = [
+                    (object)['name' => 'HP Laptop', 'category' => 'Laptop', 'asset_code' => 'LAP-HP-001', 'status' => 'Under Repair'],
+                    (object)['name' => 'Epson Printer', 'category' => 'Printer', 'asset_code' => 'PRN-EPS-004', 'status' => 'Under Repair'],
+                    (object)['name' => 'Cisco Router', 'category' => 'Network Device', 'asset_code' => 'NET-CIS-007', 'status' => 'Under Repair'],
+                    (object)['name' => 'Dell Desktop', 'category' => 'Desktop', 'asset_code' => 'DES-DEL-009', 'status' => 'Under Repair'],
+                ];
+            @endphp
 
             <ul class="space-y-3">
-                <li>
-                    <p class="font-medium text-blue-600">HP Laptop</p>
-                    <p class="text-sm text-gray-600">Category: Laptop | Asset Code: LAP-HP-001</p>
-                    <span
-                        class="inline-block bg-yellow-700 text-white text-xs px-3 py-1 rounded-md mt-1">Under Repair</span>
-                </li>
-                <li>
-                    <p class="font-medium text-purple-600">Epson Printer</p>
-                    <p class="text-sm text-gray-600">Category: Printer | Asset Code: PRN-EPS-004</p>
-                    <span
-                        class="inline-block bg-yellow-700 text-white text-xs px-3 py-1 rounded-md mt-1">Under Repair</span>
-                </li>
-                <li>
-                    <p class="font-medium text-blue-500">Cisco Router</p>
-                    <p class="text-sm text-gray-600">Category: Network Device | Asset Code: NET-CIS-007</p>
-                    <span
-                        class="inline-block bg-yellow-700 text-white text-xs px-3 py-1 rounded-md mt-1">Under Repair</span>
-                </li>
+                @forelse($hardwareRepairs as $repair)
+                    @if ($loop->index < 3)
+                        <li>
+                            <p class="font-medium text-blue-600">{{ $repair->name }}</p>
+                            <p class="text-sm text-gray-600">Category: {{ $repair->category }} | Asset Code: {{ $repair->asset_code }}</p>
+                            <span class="inline-block bg-yellow-700 text-white text-xs px-3 py-1 rounded-md mt-1">{{ $repair->status }}</span>
+                        </li>
+                    @endif
+                @empty
+                    <li class="text-gray-500 text-sm">No hardware currently under repair.</li>
+                @endforelse
             </ul>
 
-            <a href="#" class="text-sm text-blue-600 hover:underline mt-4 inline-block">View More →</a>
+            {{-- View More --}}
+            <button @click="open = true" class="text-sm text-blue-600 hover:underline mt-4 inline-block">View More →</button>
+
+            {{-- Modal --}}
+<div 
+    x-show="open" 
+    x-cloak 
+    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+>
+    <div class="bg-white rounded-xl shadow-lg w-full max-w-2xl relative">
+        
+        <!-- Header -->
+        <div class="bg-purple-800 text-white rounded-t-xl px-6 py-3">
+            <h2 class="text-xl font-semibold">All Hardware Under Repair</h2>
         </div>
+
+        <!-- Body -->
+        <div class="p-6">
+            <ul class="space-y-3 max-h-80 overflow-y-auto">
+                @foreach($hardwareRepairs as $repair)
+                    <li class="border-b pb-2">
+                        <p class="font-medium text-blue-600">{{ $repair->name }}</p>
+                        <p class="text-sm text-gray-600">
+                            Category: {{ $repair->category }} | Asset Code: {{ $repair->asset_code }}
+                        </p>
+                        <span class="inline-block bg-yellow-700 text-white text-xs px-3 py-1 rounded-md mt-1">
+                            {{ $repair->status }}
+                        </span>
+                    </li>
+                @endforeach
+            </ul>
+
+            <div class="flex justify-end gap-3 mt-6">
+                <button 
+                    @click="open = false" 
+                    class="px-4 py-2 rounded-lg bg-gray-300 hover:bg-gray-400 text-sm"
+                >
+                    Close
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
 
         {{-- Upcoming License Expirations --}}
-        <div class="bg-white rounded-xl shadow-md p-6 relative">
+        <div class="bg-white rounded-xl shadow-md p-6 relative" x-data="{ open: false }">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-semibold flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                    <path fill-rule="evenodd" d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clip-rule="evenodd" />
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                    <path fill-rule="evenodd" d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z" clip-rule="evenodd" />
                     </svg>
-                     Upcoming License Expirations
-                </h3>
 
+                    
+                    Upcoming License Expirations</h3>
             </div>
 
-            <ul class="space-y-4">
-                <li>
-                    <p class="font-medium text-purple-800">Microsoft Office 365</p>
-                    <p class="text-sm text-gray-600">Installed on: Admin-PC | Version: 2021 | Type: Enterprise</p>
-                    <span
-                        class="inline-block bg-yellow-600 text-white text-xs px-3 py-1 rounded-md mt-1">Expires on May
-                        6, 2025</span>
-                </li>
-                <li>
-                    <p class="font-medium text-purple-800">Adobe Creative Cloud</p>
-                    <p class="text-sm text-gray-600">Installed on: Graphics-01 | Version: 2023 | Type: Annual</p>
-                    <span
-                        class="inline-block bg-yellow-600 text-white text-xs px-3 py-1 rounded-md mt-1">Expires on May
-                        13, 2025</span>
-                </li>
-                <li>
-                    <p class="font-medium text-purple-800">AutoCAD</p>
-                    <p class="text-sm text-gray-600">Installed on: Eng-PC01 | Version: 2022 | Type: Professional</p>
-                    <span
-                        class="inline-block bg-yellow-600 text-white text-xs px-3 py-1 rounded-md mt-1">Expires on May
-                        19, 2025</span>
-                </li>
+            {{-- Dummy Data --}}
+            @php
+                $upcomingLicenses = [
+                    (object)['software' => 'Microsoft Office 365', 'pc' => 'Admin-PC', 'version' => '2021', 'type' => 'Enterprise', 'expiry' => 'May 6, 2025'],
+                    (object)['software' => 'Adobe Creative Cloud', 'pc' => 'Graphics-01', 'version' => '2023', 'type' => 'Annual', 'expiry' => 'May 13, 2025'],
+                    (object)['software' => 'AutoCAD', 'pc' => 'Eng-PC01', 'version' => '2022', 'type' => 'Professional', 'expiry' => 'May 19, 2025'],
+                    (object)['software' => 'Zoom Pro', 'pc' => 'ConfRoom-01', 'version' => '2024', 'type' => 'Annual', 'expiry' => 'June 2, 2025'],
+                ];
+            @endphp
+
+            <ul class="space-y-3">
+                @forelse($upcomingLicenses as $license)
+                    @if ($loop->index < 3)
+                        <li>
+                            <p class="font-medium text-purple-800">{{ $license->software }}</p>
+                            <p class="text-sm text-gray-600">Installed on: {{ $license->pc }} | Version: {{ $license->version }} | Type: {{ $license->type }}</p>
+                            <span class="inline-block bg-yellow-600 text-white text-xs px-3 py-1 rounded-md mt-1">Expires on {{ $license->expiry }}</span>
+                        </li>
+                    @endif
+                @empty
+                    <li class="text-gray-500 text-sm">No upcoming license expirations.</li>
+                @endforelse
             </ul>
 
-            <a href="#" class="text-sm text-blue-600 hover:underline mt-4 inline-block">View More →</a>
+            {{-- View More --}}
+            <button @click="open = true" class="text-sm text-blue-600 hover:underline mt-4 inline-block">View More →</button>
+
+            {{-- Modal --}}
+<div 
+    x-show="open" 
+    x-cloak 
+    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+>
+    <div class="bg-white rounded-xl shadow-lg w-full max-w-2xl relative">
+        
+        <!-- Header -->
+        <div class="bg-purple-800 text-white rounded-t-xl px-6 py-3">
+            <h2 class="text-xl font-semibold">All Upcoming License Expirations</h2>
         </div>
+
+        <!-- Body -->
+        <div class="p-6">
+            <ul class="space-y-3 max-h-80 overflow-y-auto">
+                @foreach($upcomingLicenses as $license)
+                    <li class="border-b pb-2">
+                        <p class="font-medium text-purple-800">{{ $license->software }}</p>
+                        <p class="text-sm text-gray-600">
+                            Installed on: {{ $license->pc }} | Version: {{ $license->version }} | Type: {{ $license->type }}
+                        </p>
+                        <span class="inline-block bg-yellow-600 text-white text-xs px-3 py-1 rounded-md mt-1">
+                            Expires on {{ $license->expiry }}
+                        </span>
+                    </li>
+                @endforeach
+            </ul>
+
+            <div class="flex justify-end gap-3 mt-6">
+                <button 
+                    @click="open = false" 
+                    class="px-4 py-2 rounded-lg bg-gray-300 hover:bg-gray-400 text-sm"
+                >
+                    Close
+                </button>
+            </div>
+        </div>
+
     </div>
+</div>
+</div>
+</div>
+
 
     {{-- Bottom Section --}}
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-        {{-- Toner Stock --}}
-        <div class="bg-white rounded-xl shadow-md p-6 relative">
+        {{-- Toner Stock Availability --}}
+        <div class="bg-white rounded-xl shadow-md p-6 relative" x-data="{ open: false }">
             <div class="flex justify-between items-center mb-4">
-    <h3 class="text-lg font-semibold flex items-center gap-2">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" 
-         class="w-6 h-6 text-gray-700">
-        <path fill-rule="evenodd" d="M7.875 1.5C6.839 1.5 6 2.34 6 3.375v2.99c-.426.053-.851.11-1.274.174-1.454.218-2.476 1.483-2.476 2.917v6.294a3 3 0 0 0 3 3h.27l-.155 1.705A1.875 1.875 0 0 0 7.232 22.5h9.536a1.875 1.875 0 0 0 1.867-2.045l-.155-1.705h.27a3 3 0 0 0 3-3V9.456c0-1.434-1.022-2.7-2.476-2.917A48.716 48.716 0 0 0 18 6.366V3.375c0-1.036-.84-1.875-1.875-1.875h-8.25ZM16.5 6.205v-2.83A.375.375 0 0 0 16.125 3h-8.25a.375.375 0 0 0-.375.375v2.83a49.353 49.353 0 0 1 9 0Zm-.217 8.265c.178.018.317.16.333.337l.526 5.784a.375.375 0 0 1-.374.409H7.232a.375.375 0 0 1-.374-.409l.526-5.784a.373.373 0 0 1 .333-.337 41.741 41.741 0 0 1 8.566 0Zm.967-3.97a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H18a.75.75 0 0 1-.75-.75V10.5ZM15 9.75a.75.75 0 0 0-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 0 0 .75-.75V10.5a.75.75 0 0 0-.75-.75H15Z" clip-rule="evenodd" />
-    </svg>
-    Toner Stock Availability
-    </h3>
+                <h3 class="text-lg font-semibold flex items-center gap-2">
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                    <path fill-rule="evenodd" d="M5 2.75C5 1.784 5.784 1 6.75 1h6.5c.966 0 1.75.784 1.75 1.75v3.552c.377.046.752.097 1.126.153A2.212 2.212 0 0 1 18 8.653v4.097A2.25 2.25 0 0 1 15.75 15h-.241l.305 1.984A1.75 1.75 0 0 1 14.084 19H5.915a1.75 1.75 0 0 1-1.73-2.016L4.492 15H4.25A2.25 2.25 0 0 1 2 12.75V8.653c0-1.082.775-2.034 1.874-2.198.374-.056.75-.107 1.127-.153L5 6.25v-3.5Zm8.5 3.397a41.533 41.533 0 0 0-7 0V2.75a.25.25 0 0 1 .25-.25h6.5a.25.25 0 0 1 .25.25v3.397ZM6.608 12.5a.25.25 0 0 0-.247.212l-.693 4.5a.25.25 0 0 0 .247.288h8.17a.25.25 0 0 0 .246-.288l-.692-4.5a.25.25 0 0 0-.247-.212H6.608Z" clip-rule="evenodd" />
+                    </svg>
 
-                <button class="bg-purple-800 text-white px-4 py-2 rounded-lg hover:bg-purple-900">
-                    Add Toner/Ink
-                </button>
+                    
+                    Toner Stock Availability</h3>
             </div>
 
-            <ul class="space-y-2">
-                <li class="flex justify-between">
-                    <span class="font-medium text-purple-800">Black Toner</span>
-                    <span class="bg-green-600 text-white text-xs px-3 py-1 rounded-md">10 in Stock</span>
-                </li>
-                <li class="flex justify-between">
-                    <span class="font-medium text-blue-600">Cyan Toner</span>
-                    <span class="bg-yellow-600 text-white text-xs px-3 py-1 rounded-md">2 in Stock</span>
-                </li>
-                <li class="flex justify-between">
-                    <span class="font-medium text-pink-600">Magenta Toner</span>
-                    <span class="bg-green-600 text-white text-xs px-3 py-1 rounded-md">15 in Stock</span>
-                </li>
-                <li class="flex justify-between">
-                    <span class="font-medium text-yellow-600">Yellow Toner</span>
-                    <span class="bg-red-600 text-white text-xs px-3 py-1 rounded-md">0 in Stock</span>
-                </li>
+            {{-- Dummy Data --}}
+            @php
+                $tonerStocks = [
+                    (object)['brand' => 'Black Toner', 'quantity' => 10],
+                    (object)['brand' => 'Cyan Toner', 'quantity' => 2],
+                    (object)['brand' => 'Magenta Toner', 'quantity' => 15],
+                    (object)['brand' => 'Yellow Toner', 'quantity' => 0],
+                ];
+            @endphp
+
+            <ul class="space-y-3">
+                @forelse($tonerStocks as $toner)
+                    @if ($loop->index < 3)
+                        <li class="flex justify-between">
+                            <span class="font-medium text-purple-800">{{ $toner->brand }}</span>
+                            <span class="bg-{{ $toner->quantity == 0 ? 'red' : ($toner->quantity <= 2 ? 'yellow' : 'green') }}-600 text-white text-xs px-3 py-1 rounded-md">
+                                {{ $toner->quantity }} in Stock
+                            </span>
+                        </li>
+                    @endif
+                @empty
+                    <li class="text-gray-500 text-sm">No toner stock records.</li>
+                @endforelse
             </ul>
+
+            {{-- View More --}}
+            <button @click="open = true" class="text-sm text-blue-600 hover:underline mt-4 inline-block">View More →</button>
+
+            {{-- Modal --}}
+<div 
+    x-show="open" 
+    x-cloak 
+    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+>
+    <div class="bg-white rounded-xl shadow-lg w-full max-w-2xl relative">
+        
+        <!-- Header -->
+        <div class="bg-purple-800 text-white rounded-t-xl px-6 py-3">
+            <h2 class="text-xl font-semibold">All Toner Stock Availability</h2>
+        </div>
+
+        <!-- Body -->
+        <div class="p-6">
+            <ul class="space-y-3 max-h-80 overflow-y-auto">
+                @foreach($tonerStocks as $toner)
+                    <li class="border-b pb-2 flex justify-between">
+                        <span class="font-medium text-purple-800">{{ $toner->brand }}</span>
+                        <span class="bg-{{ $toner->quantity == 0 ? 'red' : ($toner->quantity <= 2 ? 'yellow' : 'green') }}-600 text-white text-xs px-3 py-1 rounded-md">
+                            {{ $toner->quantity }} in Stock
+                        </span>
+                    </li>
+                @endforeach
+            </ul>
+
+            <div class="flex justify-end gap-3 mt-6">
+                <button 
+                    @click="open = false" 
+                    class="px-4 py-2 rounded-lg bg-gray-300 hover:bg-gray-400 text-sm"
+                >
+                    Close
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
         </div>
 
         {{-- Low Stock Items --}}
-        <div class="bg-white rounded-xl shadow-md p-6 relative">
+        <div class="bg-white rounded-xl shadow-md p-6 relative" x-data="{ open: false }">
             <h3 class="text-lg font-semibold flex items-center gap-2 mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
-                <path d="M12.378 1.602a.75.75 0 0 0-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03ZM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 0 0 .372-.648V7.93ZM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 0 0 .372.648l8.628 5.033Z" />
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5">
+                <path fill-rule="evenodd" d="M1.22 5.222a.75.75 0 0 1 1.06 0L7 9.942l3.768-3.769a.75.75 0 0 1 1.113.058 20.908 20.908 0 0 1 3.813 7.254l1.574-2.727a.75.75 0 0 1 1.3.75l-2.475 4.286a.75.75 0 0 1-1.025.275l-4.287-2.475a.75.75 0 0 1 .75-1.3l2.71 1.565a19.422 19.422 0 0 0-3.013-6.024L7.53 11.533a.75.75 0 0 1-1.06 0l-5.25-5.25a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
                 </svg>
-                Low Stock Items
-            </h3>
+
+                
+                Low Stock Items</h3>
+
+            {{-- Dummy Data --}}
+            @php
+                $lowStockItems = [
+                    (object)['item' => 'Cyan Toner', 'status' => 'Low'],
+                    (object)['item' => 'Black Toner', 'status' => 'Out'],
+                    (object)['item' => 'USB Keyboards', 'status' => 'Low'],
+                    (object)['item' => 'HDMI Cables', 'status' => 'Low'],
+                ];
+            @endphp
 
             <ul class="space-y-3">
-                <li class="flex justify-between">
-                    <span class="font-medium text-blue-600">Cyan Toner</span>
-                    <span class="bg-yellow-600 text-white text-xs px-3 py-1 rounded-md">Low</span>
-                </li>
-                <li class="flex justify-between">
-                    <span class="font-medium text-purple-800">Black Toner</span>
-                    <span class="bg-red-600 text-white text-xs px-3 py-1 rounded-md">Out</span>
-                </li>
-                <li class="flex justify-between">
-                    <span class="font-medium text-gray-800">USB Keyboards</span>
-                    <span class="bg-yellow-600 text-white text-xs px-3 py-1 rounded-md">Low</span>
-                </li>
+                @forelse($lowStockItems as $lowStock)
+                    @if ($loop->index < 3)
+                        <li class="flex justify-between">
+                            <span class="font-medium text-blue-600">{{ $lowStock->item }}</span>
+                            <span class="bg-{{ $lowStock->status == 'Out' ? 'red' : 'yellow' }}-600 text-white text-xs px-3 py-1 rounded-md">{{ $lowStock->status }}</span>
+                        </li>
+                    @endif
+                @empty
+                    <li class="text-gray-500 text-sm">No low stock items.</li>
+                @endforelse
             </ul>
 
-            <a href="#" class="text-sm text-blue-600 hover:underline mt-4 inline-block">View More →</a>
+            {{-- View More --}}
+            <button @click="open = true" class="text-sm text-blue-600 hover:underline mt-4 inline-block">View More →</button>
+
+            {{-- Modal --}}
+<div 
+    x-show="open" 
+    x-cloak 
+    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+>
+    <div class="bg-white rounded-xl shadow-lg w-full max-w-2xl relative">
+        
+        <!-- Header -->
+        <div class="bg-purple-800 text-white rounded-t-xl px-6 py-3">
+            <h2 class="text-xl font-semibold">All Low Stock Items</h2>
         </div>
-    </div>
-</div>
 
-{{-- Add Software Modal --}}
-<div id="addSoftwareModal"
-    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <div class="bg-white rounded-lg w-full max-w-3xl shadow-lg p-6 relative">
-        <h2 class="text-xl font-semibold mb-4">Add Record</h2>
+        <!-- Body -->
+        <div class="p-6">
+            <ul class="space-y-3 max-h-80 overflow-y-auto">
+                @foreach($lowStockItems as $lowStock)
+                    <li class="border-b pb-2 flex justify-between">
+                        <span class="font-medium text-blue-600">{{ $lowStock->item }}</span>
+                        <span class="bg-{{ $lowStock->status == 'Out' ? 'red' : 'yellow' }}-600 text-white text-xs px-3 py-1 rounded-md">
+                            {{ $lowStock->status }}
+                        </span>
+                    </li>
+                @endforeach
+            </ul>
 
-        <form action="" method="POST" class="space-y-4">
-            @csrf
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {{-- Software Name --}}
-                <div>
-                    <label class="block text-sm font-medium">Software Name</label>
-                    <input type="text" name="software_name" class="w-full border rounded-lg p-2">
-                </div>
-
-                {{-- Version --}}
-                <div>
-                    <label class="block text-sm font-medium">Version</label>
-                    <input type="text" name="version" class="w-full border rounded-lg p-2">
-                </div>
-
-                {{-- License Key --}}
-                <div>
-                    <label class="block text-sm font-medium">License Key</label>
-                    <input type="text" name="license_key" class="w-full border rounded-lg p-2">
-                </div>
-
-                {{-- Licensed To --}}
-                <div>
-                    <label class="block text-sm font-medium">Licensed To</label>
-                    <input type="text" name="licensed_to" class="w-full border rounded-lg p-2">
-                </div>
-
-                {{-- Installation Date --}}
-                <div>
-                    <label class="block text-sm font-medium">Installation Date</label>
-                    <input type="date" name="installation_date" class="w-full border rounded-lg p-2">
-                </div>
-
-                {{-- Expiration Date --}}
-                <div>
-                    <label class="block text-sm font-medium">Expiration Date</label>
-                    <input type="date" name="expiration_date" class="w-full border rounded-lg p-2">
-                </div>
-
-                {{-- Device Type --}}
-                <div>
-                    <label class="block text-sm font-medium">Device Type</label>
-                    <select name="device_type" class="w-full border rounded-lg p-2">
-                        <option value="Laptop">Laptop</option>
-                        <option value="Desktop">Desktop</option>
-                        <option value="Tablet">Tablet</option>
-                        <option value="Not Installed">Not Installed</option>
-                    </select>
-                </div>
-
-                {{-- Device Asset Code --}}
-                <div>
-                    <label class="block text-sm font-medium">Device Asset Code</label>
-                    <input type="text" name="device_asset_code" class="w-full border rounded-lg p-2">
-                </div>
-
-                {{-- Status --}}
-                <div>
-                    <label class="block text-sm font-medium">Status</label>
-                    <select name="status" class="w-full border rounded-lg p-2">
-                        <option value="Active">Active</option>
-                        <option value="In Stock">In Stock</option>
-                    </select>
-                </div>
-            </div>
-
-            {{-- Buttons --}}
-            <div class="flex justify-end gap-3 mt-4">
-                <button type="button"
-                    onclick="document.getElementById('addSoftwareModal').classList.add('hidden')"
-                    class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">
-                    Cancel
-                </button>
-                <button type="submit"
-                    class="px-4 py-2 bg-main text-white rounded-lg hover:bg-button_hover">
-                    Save
+            <div class="flex justify-end gap-3 mt-6">
+                <button 
+                    @click="open = false" 
+                    class="px-4 py-2 rounded-lg bg-gray-300 hover:bg-gray-400 text-sm"
+                >
+                    Close
                 </button>
             </div>
-        </form>
+        </div>
 
-        {{-- Close button --}}
-        <button onclick="document.getElementById('addSoftwareModal').classList.add('hidden')"
-            class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-lg">
-            &times;
-        </button>
-    </div>
-</div>

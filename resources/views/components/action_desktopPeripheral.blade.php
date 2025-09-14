@@ -15,11 +15,11 @@
             Edit
         </button>
 
-        <a href="/maintenance/m_desktop" 
+  <a href="/admin/maintenance" 
         class="px-4 py-2 bg-gray-300 text-black rounded-lg hover:bg-gray-400">
             Maintenance
         </a>
-        <a href="/transfer/computer_peripheral" 
+        <a href="/admin/transfer" 
         class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600">
         Transfer
         </a>

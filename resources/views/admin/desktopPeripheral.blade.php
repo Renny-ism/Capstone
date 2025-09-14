@@ -25,7 +25,7 @@
                 {{-- Dropdown Menu for Actions --}}
                 <div x-data="{ open: false }" class="relative w-full md:w-auto">
                     <button @click="open = !open" type="button" class="inline-flex items-center justify-center px-4 py-2 bg-main text-white rounded-lg hover:bg-button_hover focus:outline-none w-full md:w-auto">
-                        Other
+                        Others
                         <svg class="ml-2 -mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
@@ -73,12 +73,10 @@
                         <th class="px-4 py-3">Asset Code</th>
                         <th class="px-4 py-3">Control Code</th>
                         <th class="px-4 py-3">Date Acquired</th>                        
-                        <th class="px-4 py-3">Price</th>
                         <th class="px-4 py-3">Item Description</th>
-                        <th class="px-4 py-3">Building</th>
-                        <th class="px-4 py-3">Room</th>
                         <th class="px-4 py-3">Brand</th>
                         <th class="px-4 py-3">Model</th>
+                        <th class="px-4 py-3">Original Cost</th>
                         <th class="px-4 py-3">Remarks</th>
                         <th class="px-4 py-3">Actions</th>
                     </tr>
@@ -94,14 +92,10 @@
 </td>
                         <td class="px-4 py-3">2025
                         </td>
-                        <td class="px-4 py-3">45,000.00</td>
-
                         <td class="px-4 py-3"> Keyboard</td>
-
-                        <td class="px-4 py-3">Zurbaran Hall Dormitory</td>
-                        <td class="px-4 py-3">Main Entrance</td>
                         <td class="px-4 py-3">Asus</td>
                         <td class="px-4 py-3"> </td>
+                         <td class="px-4 py-3">2,000</td>
                         <td class="px-4 py-3"> Serviceable/Waiting
  </td>
                          <td class="px-4 py-3"><x-action_desktopPeripheral/></td>
@@ -120,7 +114,7 @@
 </div>
 {{-- Modal --}}
 <div id="addDesktopP"
-    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
 
     <div class="bg-white rounded-lg w-full max-w-3xl shadow-lg p-6 relative">
         <h2 class="text-xl font-semibold mb-4">Add Record</h2>
@@ -128,53 +122,83 @@
         <form action="" method="POST" class="space-y-4">
             @csrf
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
+            <div class="flex flex-wrap gap-4">
+                {{-- Asset Code --}}
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Asset Code</label>
                     <input type="text" name="dt_asset_code" class="w-full border rounded-lg p-2">
                 </div>
-                <div>
-                    <label class="block text-sm font-medium">Control Code</label>
-                    <input type="text" name="dt_asset_code" class="w-full border rounded-lg p-2">
-                </div>
-                  <div>
-                    <label class="block text-sm font-medium">Item Description</label>
-                    <select name="dt_brand" class="w-full border rounded-lg p-2">
-                        <option value="...">...</option>
-                        <option value="Keyboard">Keyboard</option>
-                        <option value="Keyboard">Monitor</option>
-                        <option value="Mouse">Central Processing Unit</option>
-                         <option value="Keyboard">Automatic Voltage Regulator</option>
 
+                {{-- Brand --}}
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Brand</label>
+                    <select name="dt_brand" class="w-full border rounded-lg p-2">
+                        <option value="">Select Brand</option>
+                        <option value="Asus">Asus</option>
+                        <option value="Dell">Dell</option>
+                        <option value="HP">HP</option>
+                        <option value="Lenovo">Lenovo</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
-                <div>
+
+                {{-- Model --}}
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Model</label>
+                    <input type="text" name="dt_model" class="w-full border rounded-lg p-2">
+                </div>
+
+                {{-- Type / Item Description --}}
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Type / Item Description</label>
+                    <select name="dt_item_description" class="w-full border rounded-lg p-2">
+                        <option value="">Select...</option>
+                        <option value="Keyboard">Keyboard</option>
+                        <option value="Monitor">Monitor</option>
+                        <option value="CPU">Central Processing Unit</option>
+                        <option value="AVR">Automatic Voltage Regulator</option>
+                    </select>
+                </div>
+
+                {{-- Control Code --}}
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Control Code</label>
+                    <input type="text" name="dt_control_code" class="w-full border rounded-lg p-2">
+                </div>
+
+                {{-- Building --}}
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Building</label>
                     <select name="dt_building" class="w-full border rounded-lg p-2">
-                        <option value="">...</option>
+                        <option value="">Select...</option>
                         <option value="FDT">FDT</option>
                         <option value="PGT">PGT</option>
                         <option value="LRC">LRC</option>
                         <option value="BEdD">BEdD</option>
                     </select>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium">Department</label>
-                    <input type="text" name="dt_loc" class="w-full border rounded-lg p-2">
-                </div>
-                <div>
-                    <label class="block text-sm font-medium">Location</label>
-                    <input type="text" name="dt_loc" class="w-full border rounded-lg p-2">
-                </div>                </div>
 
-<div>
-                    <label class="block text-sm font-medium">Acquired Date</label>
-                    <input type="date" name="dt_loc" class="w-full border rounded-lg p-2">
+                {{-- Department --}}
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Department</label>
+                    <input type="text" name="dt_department" class="w-full border rounded-lg p-2">
                 </div>
-                   
-            
+
+                {{-- Location --}}
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Location</label>
+                    <input type="text" name="dt_location" class="w-full border rounded-lg p-2">
+                </div>
+
+                {{-- Acquired Date --}}
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Acquired Date</label>
+                    <input type="date" name="dt_acquired_date" class="w-full border rounded-lg p-2">
+                </div>
+            </div>
+
             {{-- Buttons --}}
-            <div class="flex justify-end gap-3 mt-4">
+            <div class="flex justify-end gap-3 mt-4 flex-wrap">
                 <button type="button"
                     onclick="document.getElementById('addDesktopP').classList.add('hidden')"
                     class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">
@@ -195,3 +219,4 @@
         </button>
     </div>
 </div>
+

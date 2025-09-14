@@ -130,7 +130,7 @@
                             <th class="px-4 py-3">Mouse</th>
                             <th class="px-4 py-3">Operating System</th>
                             <th class="px-4 py-3">Processor</th>
-                            <th class="px-4 py-3">MOtherboard</th>      
+                            <th class="px-4 py-3">Motherboard</th>      
                             <th class="px-4 py-3">RAM</th>
                             <th class="px-4 py-3">Storage</th>
                             <th class="px-4 py-3">Graphics</th>

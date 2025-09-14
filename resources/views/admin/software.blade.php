@@ -51,55 +51,56 @@
 </div>
 {{-- Modal --}}
 <div id="addSoftwareModal"
-    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
 
     <div class="bg-white rounded-lg w-full max-w-3xl shadow-lg p-6 relative">
-        <h2 class="text-xl font-semibold mb-4">Add Record</h2>
+        <h2 class="text-xl font-semibold mb-4">Add Software Record</h2>
 
         <form action="" method="POST" class="space-y-4">
             @csrf
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-wrap gap-4">
                 {{-- Software Name --}}
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Software Name</label>
                     <input type="text" name="software_name" class="w-full border rounded-lg p-2">
                 </div>
 
                 {{-- Version --}}
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Version</label>
                     <input type="text" name="version" class="w-full border rounded-lg p-2">
                 </div>
 
                 {{-- License Key --}}
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">License Key</label>
                     <input type="text" name="license_key" class="w-full border rounded-lg p-2">
                 </div>
 
                 {{-- Licensed To --}}
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Licensed To</label>
                     <input type="text" name="licensed_to" class="w-full border rounded-lg p-2">
                 </div>
 
                 {{-- Installation Date --}}
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Installation Date</label>
                     <input type="date" name="installation_date" class="w-full border rounded-lg p-2">
                 </div>
 
                 {{-- Expiration Date --}}
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Expiration Date</label>
                     <input type="date" name="expiration_date" class="w-full border rounded-lg p-2">
                 </div>
 
                 {{-- Device Type --}}
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Device Type</label>
                     <select name="device_type" class="w-full border rounded-lg p-2">
+                        <option value="">Select Device Type</option>
                         <option value="Laptop">Laptop</option>
                         <option value="Desktop">Desktop</option>
                         <option value="Tablet">Tablet</option>
@@ -108,15 +109,16 @@
                 </div>
 
                 {{-- Device Asset Code --}}
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Device Asset Code</label>
                     <input type="text" name="device_asset_code" class="w-full border rounded-lg p-2">
                 </div>
 
                 {{-- Status --}}
-                <div>
+                <div class="flex-1 min-w-[150px]">
                     <label class="block text-sm font-medium">Status</label>
                     <select name="status" class="w-full border rounded-lg p-2">
+                        <option value="">Select Status</option>
                         <option value="Active">Active</option>
                         <option value="In Stock">In Stock</option>
                     </select>
@@ -124,7 +126,7 @@
             </div>
 
             {{-- Buttons --}}
-            <div class="flex justify-end gap-3 mt-4">
+            <div class="flex justify-end gap-3 mt-4 flex-wrap">
                 <button type="button"
                     onclick="document.getElementById('addSoftwareModal').classList.add('hidden')"
                     class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">
@@ -145,3 +147,4 @@
         </button>
     </div>
 </div>
+

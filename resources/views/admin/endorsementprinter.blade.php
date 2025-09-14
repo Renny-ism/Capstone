@@ -1,0 +1,97 @@
+<x-navigationbar />
+
+<!-- Main Content -->
+<div class="bg-gray-50 min-h-screen flex-1 p-6 mt-0 transition-all duration-300 lg:ml-64">
+    <div class="w-full">
+        {{-- Header --}}
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-3">
+            <h1 class="text-2xl font-semibold">Printer Endorsement</h1>
+            <button onclick="document.getElementById('addTonerModal').classList.remove('hidden')" 
+                class="inline-flex items-center justify-center px-4 py-2 bg-main text-white rounded-lg hover:bg-button_hover">
+                + Add Record
+            </button>
+        </div>
+
+        <!-- Table -->
+        <div class="bg-white rounded-lg shadow-md overflow-x-auto">
+            <table class="min-w-full text-sm text-left border-collapse">
+                <thead>
+                   <tr class="bg-button_hover text-white">
+                    <th class="px-4 py-3">Asset Code</th>
+                    <th class="px-4 py-3">Date</th>
+                    <th class="px-4 py-3">User</th>
+                    <th class="px-4 py-3">Signed Agreement</th>
+                    <th class="px-4 py-3">Actions</th>
+                </tr>
+                </thead>
+                <tbody> <!-- dummy data --> 
+    <!-- for the actions, lagyan ng ellipses para di redundant tignan yung edit, delete, maintenance-->
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="px-4 py-3">PRN-001</td>
+                        <td class="px-4 py-3">2022-05-10</td>
+                        <td class="px-4 py-3">Juan Dela Cruz</td>
+                        <td class="px-4 py-3">  </td>
+                        <td class="px-4 py-3"><x-action_ink /></td> <!-- edit and update-->
+
+                    </tr>
+                 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{{-- Modal --}}
+<div id="addTonerModal"
+    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+
+    <div class="bg-white rounded-lg w-full max-w-3xl shadow-lg p-6 relative">
+        <h2 class="text-xl font-semibold mb-4">Add Record</h2>
+
+        <form action="" method="POST" class="space-y-4" enctype="multipart/form-data">
+            @csrf
+
+            <div class="flex flex-wrap gap-4">
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Asset Code</label>
+                    <input type="text" name="asset_code" class="w-full border rounded-lg p-2">
+                </div>
+
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Date</label>
+                    <input type="date" name="date" class="w-full border rounded-lg p-2">
+                </div>
+
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">User</label>
+                    <input type="text" name="user" class="w-full border rounded-lg p-2">
+                </div>
+
+                <div class="flex-1 min-w-[150px]">
+                    <label class="block text-sm font-medium">Signed Agreement</label>
+                    <input type="file" name="signed_agreement" accept="image/*" class="w-full border rounded-lg p-2">
+                </div>
+            </div>
+        
+            {{-- Buttons --}}
+            <div class="flex justify-end gap-3 mt-4 flex-wrap">
+                <button type="button"
+                    onclick="document.getElementById('addTonerModal').classList.add('hidden')"
+                    class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400">
+                    Cancel
+                </button>
+
+                <button type="submit"
+                    class="px-4 py-2 bg-main text-white rounded-lg hover:bg-button_hover">
+                    Save
+                </button>
+            </div>
+        </form>
+
+        {{-- Close button --}}
+        <button onclick="document.getElementById('addTonerModal').classList.add('hidden')"
+            class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-lg">
+            &times;
+        </button>
+    </div>
+</div>
+
